@@ -1,28 +1,11 @@
 
-server:
-    port: 8099
 
-# OAuth2 客户端配置
-#spring:
-#    security:
-#        oauth2:
-#            client:
-#                registration:
-#                    qq:
-#                        client-id: 1112423364 # 替换为你的腾讯客户端 ID（App ID）
-#                        client-secret: Xa5G19kFGpzaFWqQ # 替换为你的腾讯客户端密钥（App Key）
-#                        scope: get_user_info # 授权范围，表示获取用户信息
-#                        authorization-grant-type: authorization_code
-#                        redirect-uri: "{baseUrl}/login/oauth2/code/qq" # 你的重定向 URI
-#                        client-name: QQ # 客户端名称，表示 QQ 登录
-#                provider:
-#                    qq:
-#                        authorization-uri: https://graph.qq.com/oauth2.0/authorize
-#                        token-uri: https://graph.qq.com/oauth2.0/token
-#                        user-info-uri: https://graph.qq.com/user/get_user_info
+springdoc:
+    api-docs:
+        enabled: true
+    swagger-ui:
+        enabled: true
+        path: /swagger-ui.html
 
-# JWT 配置
-jwt:
-    secret: eG4zZTltvHm5SkpLqhnFf57uZTeMbFzYRVg4Rk7gEqc= # 设置 JWT 密钥，用于签名和验证 JWT
-    expiration: 3600000 # JWT 的有效期，单位为毫秒（1 小时）
+
 

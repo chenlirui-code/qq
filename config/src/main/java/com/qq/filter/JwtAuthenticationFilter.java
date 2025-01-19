@@ -36,6 +36,13 @@ public class JwtAuthenticationFilter implements Filter  {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String token = httpRequest.getHeader("Authorization");
 
+        String requestURI = httpRequest.getRequestURI();
+        // 排除 Swagger UI 和 API 文档的请求
+        if (requestURI.startsWith("/swagger-ui") || requestURI.startsWith("/v3/api-docs")) {
+            chain.doFilter(request, response);  // 不需要 JWT 认证，直接继续处理
+            return;
+        }
+
         if (token != null && token.startsWith("Bearer ")) {
             token = token.substring(7);
             String username = jwtUtil.extractUsername(token);
